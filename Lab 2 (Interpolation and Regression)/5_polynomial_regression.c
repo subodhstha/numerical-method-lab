@@ -4,7 +4,7 @@
 #include<math.h>
 int main()
 {
-    int i,j,k,m,n;
+    int m,n;
     float a[20][20],b[20],z[20], x[20],fx[20];
     float sum,pivot,term; 
     printf("Enter no of data points\n"); 
@@ -12,38 +12,38 @@ int main()
     printf("Enter degree of polynomial to be fitted\n"); 
     scanf("%d",&m); 
     printf("Enter data points (xi,fx(i))\n"); 
-    for(i=0;i<n;i++)
+    for(int i=0;i<n;i++)
     {
         scanf("%f%f",&x[i],&fx[i]);
     }
     //Construction of coefficient matrix 
-    for(i=0;i<=m;i++) 
-    for(j=0;j<=m;j++)
+    for(int i=0;i<=m;i++) 
+    for(int j=0;j<=m;j++)
     {
         sum=0;
-        for(k=0;k<n;k++) 
+        for(int k=0;k<n;k++) 
             sum=sum+pow(x[k],i+j);
         a[i][j]=sum;
     }
     //Construction of RHS vectors 
-    for(i=0;i<=m;i++)
+    for(int i=0;i<=m;i++)
     {
         sum=0;
-        for(k=0;k<n;k++)
+        for(int k=0;k<n;k++)
         sum=sum+fx[k]*pow(x[k],i);
         b[i]=sum;
     }
     //Forward Elimination
-    for (k=0;k<m;k++) 
+    for (int k=0;k<m;k++) 
     {
         pivot=a[k][k];
             if (pivot<0.000001) 
                 printf("Method failed\n");
         else
-        for(i=k+1;i<=m;i++)
+        for(int i=k+1;i<=m;i++)
         {
             term=a[i][k]/pivot; 
-            for(j=0;j<=m;j++)
+            for(int j=0;j<=m;j++)
             {
                 a[i][j]=a[i][j]-a[k][j]*term;
             }
@@ -52,10 +52,10 @@ int main()
     }
     z[m]=b[m]/a[m][m];
     //Back substitution
-    for(i=m-1;i>=0;i--)
+    for(int i=m-1;i>=0;i--)
     {
         sum=0;
-        for(j=i+1;j<=m;j++)
+        for(int j=i+1;j<=m;j++)
         {
             sum=sum+a[i][j]*z[j];
         }
@@ -63,7 +63,7 @@ int main()
     }
     printf("The polynomial of regression is :\n"); 
     printf("y=%f+ %fx",z[0],z[1]);
-    for ( i = 2; i <= m; i++)
+    for (int i = 2; i <= m; i++)
     {
         printf("+%fx^%d",z[i],i);
         getch();
