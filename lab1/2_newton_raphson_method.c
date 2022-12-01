@@ -1,7 +1,10 @@
+// Newton raphson method
+
 #include<stdio.h>
-#include<math.h>
 #include<conio.h>
-#define F(x)(a3*x*x*x+a2*x*x+a1*x+a0);
+#include<math.h>
+
+#define F(x)(a3*x*x*x+a2*x*x+a1*x+a0)
 #define FD(x)(3*a3*x*x+2*a2*x+a1)
 float a0,a1, a2, a3;
 int main()
