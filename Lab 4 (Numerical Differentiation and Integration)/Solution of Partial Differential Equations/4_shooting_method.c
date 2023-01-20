@@ -61,11 +61,11 @@ int main()
     }
     else
     {
-    printf("\nEnter the value of M2:");
-    scanf("%f",&m2);
-    z0=m2;
-    b2=shoot(x0,y0,z0,xn,h,p=1);
-    printf("\nB2 is %f",b2);
+        printf("\nEnter the value of M2:");
+        scanf("%f",&m2);
+        z0=m2;
+        b2=shoot(x0,y0,z0,xn,h,p=1);
+        printf("\nB2 is %f",b2);
     }
     if(fabs(b2-b)<0.00005)
     {

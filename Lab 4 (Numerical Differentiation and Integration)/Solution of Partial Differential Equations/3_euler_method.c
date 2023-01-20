@@ -6,7 +6,8 @@
 int main()
 {
     float x0, y0, xn, h, yn, slope;
-    int i, n;    printf("Enter Initial Condition\n");
+    int i, n;    
+    printf("Enter Initial Condition\n");
     printf("x0 = ");
     scanf("%f", &x0);
     printf("y0 = ");
