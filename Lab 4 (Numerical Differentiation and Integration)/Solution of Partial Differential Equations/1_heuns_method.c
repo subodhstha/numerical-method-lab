@@ -8,7 +8,6 @@ int main()
 {
     int i,j,c;
     float x[100],y[100],h,m[100],m1,m2,a,s[100],w;
-    printf("\n     C program for Modified Euler Method \n\n");
     printf("  Enter the initial value of x:");
     scanf("%f",&x[0]);
     printf("\n  Enter the value of increment h:");
@@ -51,7 +50,6 @@ float fun(float a,float b)
 
 
 /*output
-     C program for Modified Euler Method
 
   Enter the initial value of x:0
 
