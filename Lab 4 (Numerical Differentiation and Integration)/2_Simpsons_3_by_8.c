@@ -1,4 +1,4 @@
-// Write a C program to estimate Romberg estimate T(p,q) of integration.
+
 
 #include<stdio.h>
 #include<conio.h>
