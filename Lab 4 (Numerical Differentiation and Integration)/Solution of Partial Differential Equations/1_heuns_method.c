@@ -1,50 +1,74 @@
 #include<stdio.h>
-#include<conio.h>
+#include<math.h>
+#include<string.h>
 
-#define f(x,y) x+y
+float fun(float,float);
 
 int main()
 {
-    float x0, y0, xn, h, yn, slope;
-    int i, n;
-    printf("Enter Initial Condition\n");
-    printf("x0 = ");
-    scanf("%f", &x0);
-    printf("y0 = ");
-    scanf("%f", &y0);
-    printf("Enter calculation point xn = ");
-    scanf("%f", &xn);
-    printf("Enter number of steps: ");
-    scanf("%d", &n);    
-    h = (xn-x0)/n;  
-    printf("\nx0\ty0\tslope\tyn\n");
-    printf("------------------------------\n");
-    for(i=0; i < n; i++)
+    int i,j,c;
+    float x[100],y[100],h,m[100],m1,m2,a,s[100],w;
+    printf("\n     C program for Modified Euler Method \n\n");
+    printf("  Enter the initial value of x:");
+    scanf("%f",&x[0]);
+    printf("\n  Enter the value of increment h:");
+    scanf("%f",&h);
+    printf("\n  Enter the final value of x:");
+    scanf("%f",&a);
+    printf("\n  Enter the initial value of the variable y :");
+    scanf("%f",&y[0]);
+    s[0]=y[0];
+    for(i=1;x[i-1]<a;i++)
     {
-        slope = f(x0, y0);
-        yn = y0 + h * slope;
-        printf("%.4f\t%.4f\t%0.4f\t%.4f\n",x0,y0,slope,yn);
-        y0 = yn;
-        x0 = x0+h;
-    }   
-    printf("\nValue of y at x = %0.2f is %0.3f",xn, yn);    
-    getch();
-    return 0;
+        w=100.0;
+        x[i]= x[i-1]+h;
+        m[i]=fun(x[i-1],y[i-1]);
+        c=0;
+        while(w>0.0001)
+        {
+            m1=fun(x[i],s[c]);
+            m2=(m[i]+m1)/2;
+            s[c+1]=y[i-1]+m2*h;
+            w=s[c]-s[c+1];
+            w=fabs(w);
+            c=c+1;
+        }
+        y[i]=s[c];
+    }
+    printf("\n\n The respective values of x and y are\n     x  \t     y\n\n");
+    for(j=0;j<i;j++)
+    {
+        printf("  %f\t%f",x[j],y[j]);
+        printf("\n");
+    }
+}
+float fun(float a,float b)
+{
+    float c;
+    c=a*a+b;
+    return(c);
 }
 
 
 /*output
-Enter Initial Condition
-x0 = 3
-y0 = 4
-Enter calculation point xn = 0.05
-Enter number of steps: 3
+     C program for Modified Euler Method
 
-x0      y0      slope   yn
-------------------------------
-3.0000  4.0000  7.0000  -2.8833
-2.0167  -2.8833 -0.8667 -2.0311
-1.0333  -2.0311 -0.9978 -1.0500
+  Enter the initial value of x:0
 
-Value of y at x = 0.05 is -1.050
+  Enter the value of increment h:0.5
+
+  Enter the final value of x:2
+
+  Enter the initial value of the variable y :
+1
+
+
+ The respective values of x and y are
+     x               y
+
+  0.000000      1.000000
+  0.500000      1.749989
+  1.000000      3.333305
+  1.500000      6.638821
+  2.000000      13.148023
 */
