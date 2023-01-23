@@ -26,20 +26,20 @@ int main()
         b[i]=0;
     k=0;
     for(i=1;i<n;i++)
+    {
+    	for(j=1;j<n;j++)
     	{
-    		for(j=1;j<n;j++)
-    		{
-    			if((i-1)==0)
-    			    b[k]=b[k]-tl;
-    			if((i+1)==n)
-    			    b[k]=b[k]-tr;
-    			if((j-1)==0)
-    			    b[k]=b[k]-tb;
-    			if((j+1)==n)
-    			    b[k]=b[k]-tu;
-    			k++;
-    		}
+    		if((i-1)==0)
+    		    b[k]=b[k]-tl;
+    		if((i+1)==n)
+    		    b[k]=b[k]-tr;
+    		if((j-1)==0)
+    		    b[k]=b[k]-tb;
+    		if((j+1)==n)
+    		    b[k]=b[k]-tu;
+    		k++;
     	}
+    }
     printf("Enter Accuracy Limit \n");
     scanf("%f",&error);	
     for(i=0;i<=n;i++)
